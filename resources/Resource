@@ -1,0 +1,5 @@
+# This is a sample configuration file for Front App Pipeline
+
+BUILD_TOOL=Gradle
+DEBUG_MODE=true
+ENVIRONMENT=Production
