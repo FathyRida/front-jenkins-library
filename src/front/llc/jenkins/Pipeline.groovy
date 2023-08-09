@@ -1,6 +1,6 @@
 package front.llc.jenkins
 
-def call(Map config) {
+def RunFrontAppPipeline(Map config) {
 	pipeline {
 		agent any
 
