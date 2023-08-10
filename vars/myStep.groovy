@@ -9,20 +9,27 @@ def call() {
 }
 
 def readFileFromResources(String filename) {
-	def resourceStream = this.class.classLoader.getResourceAsStream("front/llc/jenkins/resources/${filename}")
-	def configFile = new File("${JENKINS_HOME}/mySharedLibraryResources/${filename}")
-	configFile.withOutputStream { output ->
-		resourceStream.eachByte(4096) { buffer, len ->
-			output.write(buffer, 0, len)
-		}
-	}
-	def configText = configFile.text
-	def configMap = [:]
-	configText.readLines().each { line ->
-		def parts = line.split('=')
-		if (parts.size() == 2) {
-			configMap[parts[0].trim()] = parts[1].trim()
-		}
-	}
-	return configMap
+    ClassLoader classLoader = getClass().classLoader
+    def resourceStream = classLoader.getResourceAsStream("front/llc/jenkins/resources/${filename}")
+
+    if (resourceStream) {
+        def configFile = new File("${JENKINS_HOME}/mySharedLibraryResources/${filename}")
+        configFile.withOutputStream { output ->
+            resourceStream.eachByte(4096) { buffer, len ->
+                output.write(buffer, 0, len)
+            }
+        }
+        def configText = configFile.text
+        def configMap = [:]
+        configText.readLines().each { line ->
+            def parts = line.split('=')
+            if (parts.size() == 2) {
+                configMap[parts[0].trim()] = parts[1].trim()
+            }
+        }
+        return configMap
+    } else {
+        println "Resource not found: ${filename}"
+        return [:] 
+    }
 }
