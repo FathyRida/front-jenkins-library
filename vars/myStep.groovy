@@ -16,6 +16,9 @@ def readFileFromResources(String filename) {
     if (resourceStream) {
         def configFile = new File("${JENKINS_HOME}/mySharedLibraryResources/${filename}")
 	    echo "configFile: ${configFile}"
+	    def resourceUrl = classLoader.getResource("front/llc/jenkins/resources/${filename}")
+	    println "Resource URL: ${resourceUrl}"
+
         configFile.withOutputStream { output ->
             resourceStream.eachByte(4096) { buffer, len ->
                 output.write(buffer, 0, len)
