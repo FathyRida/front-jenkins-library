@@ -10,7 +10,8 @@ def call() {
 
 def readFileFromResources(String filename) {
     ClassLoader classLoader = getClass().classLoader
-    def resourceStream = classLoader.getResourceAsStream("front/llc/jenkins/resources/${filename}")
+   def resourceStream = classLoader.getResourceAsStream('front/llc/jenkins/resources/' + filename)
+
  echo "resourceStream: ${resourceStream}"
     if (resourceStream) {
         def configFile = new File("${JENKINS_HOME}/mySharedLibraryResources/${filename}")
