@@ -14,7 +14,7 @@ def readFileFromResources(String filename) {
 
     if (resourceStream) {
         def configFile = new File("${JENKINS_HOME}/mySharedLibraryResources/${filename}")
-	    echo  $configFile;
+	    echo "configFile: ${configFile}"
         configFile.withOutputStream { output ->
             resourceStream.eachByte(4096) { buffer, len ->
                 output.write(buffer, 0, len)
