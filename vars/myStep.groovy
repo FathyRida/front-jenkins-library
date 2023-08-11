@@ -14,7 +14,7 @@ def readFileFromResources(String filename) {
    def resourceStream = classLoader.getResourceAsStream('front/llc/jenkins/resources/' + filename)
    echo "resourceStream: ${resourceStream}"
 
-	 def resourceUrl = classLoader.getResource("front/llc/jenkins/resources/${filename}")
+	 ClassLoader resourceUrl = classLoader.getResource("front/llc/jenkins/resources/${filename}")
 	    println "Resource URL: ${resourceUrl}"
 
 	
