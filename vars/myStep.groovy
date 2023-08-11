@@ -11,6 +11,9 @@ def call() {
 def readFileFromResources(String filename) {
     ClassLoader classLoader = getClass().classLoader
     def resourceStream = classLoader.getResourceAsStream("front/llc/jenkins/resources/${filename}")
+    def classpath = System.getProperty('java.class.path')
+    echo "Classpath: ${classpath}"
+
 
     if (resourceStream) {
         def configFile = new File("${JENKINS_HOME}/mySharedLibraryResources/${filename}")
