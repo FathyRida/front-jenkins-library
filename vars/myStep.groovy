@@ -10,9 +10,8 @@ def call() {
 
 def readFileFromResources(String filename) {
     ClassLoader classLoader = getClass().classLoader
-    def resourceStream = classLoader.getResourceAsStream("front/llc/jenkins/resources/${filename}")
-    def classpath = System.getProperty('java.class.path')
-    echo "Classpath: ${classpath}"
+     def resourceStream = classLoader.getResourceAsStream("front/llc/jenkins/resources/${filename}")
+  echo "resourceStream: ${resourceStream}"
 
 
     if (resourceStream) {
