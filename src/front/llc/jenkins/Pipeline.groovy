@@ -1,5 +1,3 @@
-package front.llc.jenkins
-
 def RunFrontAppPipeline(Map config) {
 	stage('Unit-Test') {
 		myStep()
