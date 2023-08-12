@@ -1,5 +1,3 @@
-package front.llc.jenkins
-
 def call(Map config) {
     pipeline {
         agent any
