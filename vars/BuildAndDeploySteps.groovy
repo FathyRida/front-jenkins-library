@@ -4,7 +4,8 @@ def call(Map config) {
         stages {
             stage('Checkout') {
                 steps {
-                    print "Checkout"
+                    sh "pwd"
+                    sh "ls -ltro"
                 }
             }
 
