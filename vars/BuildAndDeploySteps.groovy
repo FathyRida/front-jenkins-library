@@ -2,6 +2,13 @@ def call(Map config) {
     pipeline {
         agent any
         stages {
+            stage('Test Docker Availability') {
+            steps {
+                sh 'env'
+                sh 'echo $PATH'
+                sh 'which docker'
+            }
+        }
             stage('Checkout') {
                 steps {
                     sh "pwd"
